@@ -28,8 +28,9 @@
         </li>
         <%if user_signed_in? %>
           <li class="dropdown">
-            <a class="dropdown-toggle" href="#">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
               <%=current_user.full_name %>
+              <span class="caret"></span>
             </a>
             <ul class="dropdown-menu min-width-160">
               <li><%=link_to 'Edit Profile', edit_user_registration_path %></li>

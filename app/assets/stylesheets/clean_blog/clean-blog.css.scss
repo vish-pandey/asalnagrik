@@ -63,6 +63,9 @@ hr.small {
   font-weight: 800;
   letter-spacing: 1px;
 }
+.dropdown-menu li a{
+  color: black !important;
+}
 @media only screen and (min-width: 768px) {
   .navbar-custom {
     background: transparent;

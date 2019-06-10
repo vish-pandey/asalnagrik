@@ -1,29 +1,82 @@
-<h2>Sign up</h2>
+<%if false%>
+  <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+<% end %>  
+
+
+
+<div class="main">
+  <section class="signup">
+    <div class="container">
+      <div class="signup-content">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <h2 class="form-title">Create account</h2>
+          <div class="form-group">
+            <%= f.text_field :first_name, autofocus: true, class: 'form-input', placeholder: 'Enter your first name' %>
+            <i class='error'><%= show_errors(f.object, :first_name) %></i>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :last_name, class: 'form-input', placeholder: 'Enter your last name' %>
+            <i class='error'><%= show_errors(f.object, :last_name) %></i>
+          </div>
+          <div class="form-group">
+            <%= f.email_field :email, autocomplete: "email", class: 'form-input', placeholder: 'Enter your email' %>
+            <i class='error'><%= show_errors(f.object, :email) %></i>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password, autocomplete: "new-password", class: 'form-input', placeholder: 'Password' %>
+            <i class='error'><%= show_errors(f.object, :password) %></i>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input", placeholder: "Repeat your password" %>
+            <i class='error'><%= show_errors(f.object, :password_confirmation) %></i>
+          </div>
+          <div class="form-group">
+            <%#= f.check_box :terms_of_service, id: "agree-term", class: "agree-term"%>
+            <!-- <input type="checkbox" name="user[terms_of_service]" id="agree-term" class="agree-term" /> -->
+            <input name="user[terms_of_service]" type="hidden" value="0">
+            <input id="agree-term" class="agree-term" type="checkbox" value="1" name="user[terms_of_service]">
+            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label><br/>
+            <i class='error'><%= show_errors(f.object, :terms_of_service) %></i>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Sign up", class: "form-submit" %>
+          </div>
+        <% end %>
+        <p class="loginhere">
+          Have already an account ? <%= link_to "Login here", new_session_path(resource_name) %>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
