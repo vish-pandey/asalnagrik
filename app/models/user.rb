@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :terms_of_service
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :timeoutable
  	# Validations
   validates :terms_of_service, acceptance: { accept: '1' }, on: :create
   validates :first_name, :last_name, presence: true

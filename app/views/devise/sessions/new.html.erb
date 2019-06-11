@@ -43,10 +43,13 @@
           </div>
           <% if devise_mapping.rememberable? %>
             <div class="form-group">
-              <%= f.check_box :remember_me, class: "agree-term" %>
+              <%#= f.check_box :remember_me %>
+              <input name="user[remember_me]" type="hidden" value="0">
+              <input id="agree-term" class="agree-term" type="checkbox" value="1" name="user[remember_me]">
+              <%#= f.label :remember_me %>
               <label for="agree-term" class="label-agree-term"><span><span><span></span></span></span>Remember Me</label>
             </div>
-          <% end %>  
+          <% end %>   
           <div class="form-group">
             <%= f.submit "Login", class: "form-submit" %>
           </div>
